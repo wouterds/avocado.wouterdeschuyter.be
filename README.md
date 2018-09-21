@@ -4,6 +4,8 @@ Simple app that takes a picture every 15 minutes of my future avocado plant usin
 
 ![Setup](resources/images/setup.jpg?raw=true)
 
+![Example Picture](resources/images/example.jpg?raw=true)
+
 ## Camera app
 
 ### Install dependencies
