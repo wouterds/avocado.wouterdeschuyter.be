@@ -7,7 +7,21 @@ import styles from './styles.css';
 
 type Props = {};
 
-class App extends Component<Props> {
+type Image = {
+  filename: string,
+  time: Date,
+  size: number,
+};
+
+type State = {
+  images: Array<Image>,
+};
+
+class App extends Component<Props, State> {
+  state: State = {
+    images: [],
+  };
+
   componentDidMount() {
     this.fetch();
   }
@@ -31,7 +45,20 @@ class App extends Component<Props> {
   fetch = async () => {
     const response = await axios.get(API_ENDPOINT);
 
-    console.log({ response });
+    const images: Array<Image> = response.data.map(data => {
+      const { name, size } = data;
+
+      const year = name.substr(0, 4);
+      const month = name.substr(4, 2);
+      const day = name.substr(6, 2);
+      const hour = name.substr(8, 2);
+      const minute = name.substr(10, 2);
+      const time = new Date(`${year}-${month}-${day} ${hour}:${minute} UTC`);
+
+      return { filename: name, size, time };
+    });
+
+    this.setState({ images });
   };
 }
 
