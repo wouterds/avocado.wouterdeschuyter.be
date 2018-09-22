@@ -1,14 +1,28 @@
 @import 'variables';
 
 .container {
-  margin: 50px auto;
-  max-width: 320px;
-  padding: 25px;
+  height: 100%;
+  width: 100%;
+  background-image: url('images/avocado-logo-small.png');
+  background-repeat: no-repeat;
+  background-size: 69.5px 54px;
+  background-position: right 25px bottom 25px;
+}
 
-  .content {
-    border: 1px solid rgba(var(--color-black), 0.1);
-    background-color: rgba(var(--color-black), 0.025);
-    text-align: center;
-    padding: 50px 25px;
+.content {
+  padding: 50px 75px;
+
+  h1 {
+    margin-bottom: 35px;
+
+    &:after {
+      content: '';
+      width: 35px;
+      height: 5px;
+      background: var(--color-gray);
+      display: block;
+      margin-top: 5px;
+      opacity: 0.2;
+    }
   }
 }

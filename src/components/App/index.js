@@ -7,7 +7,15 @@ class App extends Component<{}> {
   render(): Node {
     return (
       <div className={styles.container}>
-        <div className={styles.content}>hello world</div>
+        <div className={styles.content}>
+          <h1>Avocado Tracker</h1>
+
+          <p>
+            Hi there 👋
+            <br />
+            Here I try to keep track of the growth and progress of my avocado plant, not much more to see!
+          </p>
+        </div>
       </div>
     );
   }

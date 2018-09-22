@@ -8,10 +8,11 @@ body > div {
 }
 
 body {
-  font-size: 1.6em;
+  font-size: 1.8em;
   line-height: 1.8;
   font-family: var(--font-family-default);
   background: var(--color-white);
+  color: var(--color-gray);
 }
 
 h1,
