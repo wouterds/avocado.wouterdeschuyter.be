@@ -2,30 +2,15 @@
 import React, { Component } from 'react';
 import type { Node } from 'react';
 import axios from 'axios';
-import type { Image, Images } from 'types/Image';
+import type { Images } from 'types/Image';
 import { API_ENDPOINT } from 'config';
+import ImageList from 'components/ImageList';
 import styles from './styles.css';
 
 type Props = {};
 
 type State = {
   images: Images,
-};
-
-const ImageList = (props: { images: Images }): Node => {
-  const { images } = props;
-
-  if (images.length === 0) {
-    return null;
-  }
-
-  return (
-    <div className={styles.images}>
-      {images.map((image: Image, index: number) => (
-        <img key={`image-${index}`} src={`https://avocado.wouterdeschuyter.be/images/${image.filename}`} />
-      ))}
-    </div>
-  );
 };
 
 class App extends Component<Props, State> {
