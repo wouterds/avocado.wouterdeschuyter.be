@@ -1,6 +1,7 @@
 //@flow
 import React from 'react';
 import type { Node } from 'react';
+import { IMAGE_LOCATION } from 'config';
 import type { Image, Images } from 'types/Image';
 
 const ImageList = (props: { images: Images }): Node => {
@@ -14,7 +15,7 @@ const ImageList = (props: { images: Images }): Node => {
     <ul>
       {images.map((image: Image, index: number) => (
         <li key={`image-${index}`}>
-          <img src={`https://avocado.wouterdeschuyter.be/images/${image.filename}`} />
+          <img src={`${IMAGE_LOCATION}/${image.filename}`} />
         </li>
       ))}
     </ul>
