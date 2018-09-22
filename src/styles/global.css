@@ -1,0 +1,28 @@
+@import 'variables';
+
+html,
+body,
+body > div {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-size: 1.6em;
+  line-height: 1.8;
+  font-family: var(--font-family-default);
+  background: var(--color-white);
+}
+
+h1,
+h2,
+h3 {
+  font-weight: var(--font-weight-medium);
+}
+
+strong,
+h4,
+h5,
+h6 {
+  font-weight: var(--font-weight-bold);
+}

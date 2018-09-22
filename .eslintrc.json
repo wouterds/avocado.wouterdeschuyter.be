@@ -1,0 +1,40 @@
+
+{
+  "globals": {
+    "process": true
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "amd": true
+  },
+  "extends": [
+    "prettier",
+    "prettier/standard",
+    "plugin:react/recommended",
+    "plugin:flowtype/recommended"
+  ],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true
+    },
+    "sourceType": "module"
+  },
+  "plugins": [
+    "prettier",
+    "react",
+    "flowtype"
+  ],
+  "rules": {
+    "no-unused-vars": "error",
+    "no-undef": "error",
+    "prettier/prettier": "error"
+  },
+  "settings": {
+    "react": {
+      "version": "16.5"
+    }
+  }
+}
+

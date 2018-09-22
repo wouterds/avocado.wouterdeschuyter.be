@@ -2,15 +2,14 @@ version: '2'
 
 services:
   nginx:
-    image: arm32v6/nginx:1.15-alpine
-    restart: unless-stopped
+    image: docker.wouterdeschuyter.be/avocado-tracker-nginx
+    restart: on-failure
     environment:
       - VIRTUAL_HOST=avocado.wouterdeschuyter.be
       - LETSENCRYPT_HOST=avocado.wouterdeschuyter.be
       - LETSENCRYPT_EMAIL=wouter.de.schuyter@gmail.com
     volumes:
-      - ./public:/usr/share/nginx/html
-      - ./default.conf:/etc/nginx/conf.d/default.conf
+      - ./images:/code/public/images
     networks:
       - default
       - webproxy

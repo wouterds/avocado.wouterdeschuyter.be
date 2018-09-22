@@ -34,3 +34,33 @@ Add this to crontab to take a picture every 15 minutes.
 ```bash
 */15 * * * * /home/pi/avocado.wouterdeschuyter.be/camera-app/picture.sh > /dev/null 2>&1
 ```
+
+## Web app
+
+### Setup
+
+```shell
+npm install
+```
+
+#### VSCode
+
+```json
+{
+  "flow.useNPMPackagedFlow": true,
+  "javascript.validate.enable": false,
+  "eslint.autoFixOnSave": true,
+}
+```
+
+### Development
+
+```shell
+npm run hot
+```
+
+### Building
+
+```shell
+make build
+```

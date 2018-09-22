@@ -1,0 +1,10 @@
+:root {
+  --color-transparent: 'transparent';
+  --color-white: #fff;
+  --color-black: #000;
+
+  --font-family-default: Roboto, 'Myriad Pro', Helvetica, Arial, sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 600;
+}

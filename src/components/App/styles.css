@@ -1,0 +1,14 @@
+@import 'variables';
+
+.container {
+  margin: 50px auto;
+  max-width: 320px;
+  padding: 25px;
+
+  .content {
+    border: 1px solid rgba(var(--color-black), 0.1);
+    background-color: rgba(var(--color-black), 0.025);
+    text-align: center;
+    padding: 50px 25px;
+  }
+}

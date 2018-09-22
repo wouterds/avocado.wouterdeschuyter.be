@@ -1,0 +1,21 @@
+@import 'variables';
+
+@define-mixin no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@define-mixin font-face $font-family, $font-name, $weight {
+  @font-face {
+    font-family: $font-family;
+    font-weight: $weight;
+    src: url('fonts/$font-name.eot');
+    src: url('fonts/$font-name.eot?#iefix') format('embedded-opentype'),
+         url('fonts/$font-name.woff')       format('woff'),
+         url('fonts/$font-name.ttf')        format('truetype');
+  }
+}
