@@ -2,7 +2,13 @@
 
 Simple app that takes a picture every 15 minutes of my future avocado plant using a [Raspberry Pi](https://www.raspberrypi.org/) & [a cheap webcam](https://www.ebay.com/itm/163188849225).
 
+![Poster](resources/images/github-poster.png?raw=true)
+
+### Setup
+
 ![Setup](resources/images/setup.jpg?raw=true)
+
+### Example output
 
 ![Example Picture](resources/images/example.jpg?raw=true)
 
