@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import type { Node } from 'react';
 import Header from 'components/Header';
-import ImageList from 'components/ImageList';
+import Movie from 'components/Movie';
 import styles from './styles.css';
 
 type Props = {};
@@ -21,7 +21,7 @@ class App extends Component<Props> {
             plant, not much more to see!
           </p>
 
-          <ImageList />
+          <Movie />
         </div>
       </div>
     );
