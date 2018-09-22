@@ -17,7 +17,8 @@ class App extends Component<Props> {
           <p>
             Hi there 👋
             <br />
-            Here I try to keep track of the growth and progress of my avocado plant, not much more to see!
+            Here I try to keep track of the growth and progress of my avocado
+            plant, not much more to see!
           </p>
 
           <ImageList />
