@@ -17,6 +17,22 @@ type State = {
   images: Array<Image>,
 };
 
+const Images = (props: { images: Array<Image> }): Node => {
+  const { images } = props;
+
+  if (images.length === 0) {
+    return null;
+  }
+
+  return (
+    <div className={styles.images}>
+      {images.map((image: Image, index: number) => (
+        <img key={`image-${index}`} src={`https://avocado.wouterdeschuyter.be/images/${image.filename}`} />
+      ))}
+    </div>
+  );
+};
+
 class App extends Component<Props, State> {
   state: State = {
     images: [],
@@ -27,6 +43,8 @@ class App extends Component<Props, State> {
   }
 
   render(): Node {
+    const { images } = this.state;
+
     return (
       <div className={styles.container}>
         <div className={styles.content}>
@@ -37,6 +55,8 @@ class App extends Component<Props, State> {
             <br />
             Here I try to keep track of the growth and progress of my avocado plant, not much more to see!
           </p>
+
+          <Images images={images} />
         </div>
       </div>
     );
