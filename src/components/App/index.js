@@ -5,7 +5,9 @@ import axios from 'axios';
 import { API_ENDPOINT } from 'config';
 import styles from './styles.css';
 
-class App extends Component<{}> {
+type Props = {};
+
+class App extends Component<Props> {
   componentDidMount() {
     this.fetch();
   }
