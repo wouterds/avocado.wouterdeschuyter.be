@@ -1,9 +1,15 @@
 //@flow
 import React, { Component } from 'react';
 import type { Node } from 'react';
+import axios from 'axios';
+import { API_ENDPOINT } from 'config';
 import styles from './styles.css';
 
 class App extends Component<{}> {
+  componentDidMount() {
+    this.fetch();
+  }
+
   render(): Node {
     return (
       <div className={styles.container}>
@@ -19,6 +25,12 @@ class App extends Component<{}> {
       </div>
     );
   }
+
+  fetch = async () => {
+    const response = await axios.get(API_ENDPOINT);
+
+    console.log({ response });
+  };
 }
 
 export default App;
