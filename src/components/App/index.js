@@ -2,22 +2,17 @@
 import React, { Component } from 'react';
 import type { Node } from 'react';
 import axios from 'axios';
+import type { Image, Images } from 'types/Image';
 import { API_ENDPOINT } from 'config';
 import styles from './styles.css';
 
 type Props = {};
 
-type Image = {
-  filename: string,
-  time: Date,
-  size: number,
-};
-
 type State = {
-  images: Array<Image>,
+  images: Images,
 };
 
-const Images = (props: { images: Array<Image> }): Node => {
+const ImageList = (props: { images: Images }): Node => {
   const { images } = props;
 
   if (images.length === 0) {
@@ -56,7 +51,7 @@ class App extends Component<Props, State> {
             Here I try to keep track of the growth and progress of my avocado plant, not much more to see!
           </p>
 
-          <Images images={images} />
+          <ImageList images={images} />
         </div>
       </div>
     );
@@ -65,7 +60,7 @@ class App extends Component<Props, State> {
   fetch = async () => {
     const response = await axios.get(API_ENDPOINT);
 
-    const images: Array<Image> = response.data.map(data => {
+    const images: Images = response.data.map(data => {
       const { name, size } = data;
 
       const year = name.substr(0, 4);
