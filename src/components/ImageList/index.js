@@ -2,9 +2,14 @@
 import React from 'react';
 import type { Node } from 'react';
 import { IMAGE_LOCATION } from 'config';
+import { Context } from '../../context/Images';
 import type { Image, Images } from 'types/Image';
 
-const ImageList = (props: { images: Images }): Node => {
+type Props = {
+  images: Images,
+};
+
+const ImageList = (props: Props): Node => {
   const { images } = props;
 
   if (images.length === 0) {
@@ -22,4 +27,12 @@ const ImageList = (props: { images: Images }): Node => {
   );
 };
 
-export default ImageList;
+const EnhancedImageList = (): Node => {
+  return (
+    <Context.Consumer>
+      {images => <ImageList images={images || []} />}
+    </Context.Consumer>
+  );
+};
+
+export default EnhancedImageList;
