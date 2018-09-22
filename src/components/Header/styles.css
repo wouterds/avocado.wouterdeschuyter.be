@@ -1,0 +1,17 @@
+@import 'variables';
+
+.container {
+  padding: 50px 75px;
+}
+
+.title {
+  &:after {
+    content: '';
+    width: 35px;
+    height: 5px;
+    background: var(--color-gray);
+    display: block;
+    margin-top: 5px;
+    opacity: 0.2;
+  }
+}

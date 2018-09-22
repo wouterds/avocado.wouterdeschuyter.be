@@ -4,6 +4,7 @@ import type { Node } from 'react';
 import axios from 'axios';
 import type { Images } from 'types/Image';
 import { API_ENDPOINT } from 'config';
+import Header from 'components/Header';
 import ImageList from 'components/ImageList';
 import styles from './styles.css';
 
@@ -27,9 +28,9 @@ class App extends Component<Props, State> {
 
     return (
       <div className={styles.container}>
-        <div className={styles.content}>
-          <h1>Avocado Tracker</h1>
+        <Header />
 
+        <div className={styles.content}>
           <p>
             Hi there 👋
             <br />
