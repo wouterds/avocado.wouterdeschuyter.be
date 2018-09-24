@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import type { Node } from 'react';
 import axios from 'axios';
-import type { Images } from 'types/Image';
+import type { Images, Image } from 'types/Image';
 import { API_ENDPOINT } from 'config';
 
 type Props = {
@@ -35,7 +35,7 @@ class ImagesContext extends Component<Props, State> {
   fetch = async () => {
     const response = await axios.get(API_ENDPOINT);
 
-    const images: Images = response.data.map(data => {
+    let images: Images = response.data.map(data => {
       const { name, size } = data;
 
       const year = name.substr(0, 4);
@@ -47,6 +47,12 @@ class ImagesContext extends Component<Props, State> {
 
       return { filename: name, size, time };
     });
+
+    // Average image size
+    const averageSize = images.reduce((total: number, image: Image) => total + image.size, 0) / images.length;
+
+    // Filter out images below average "quality"
+    images = images.filter((image: Image) => image.size > averageSize);
 
     this.setState({ images });
   };
