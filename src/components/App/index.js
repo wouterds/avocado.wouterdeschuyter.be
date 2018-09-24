@@ -21,6 +21,8 @@ class App extends Component<Props> {
             plant, not much more to see!
           </p>
 
+          <br />
+
           <Movie />
         </div>
       </div>
