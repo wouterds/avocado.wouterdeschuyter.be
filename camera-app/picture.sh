@@ -13,4 +13,4 @@ fswebcam -c ./webcam.conf $FILE
 sudo fbi -T 2 -d /dev/fb1 -noverbose -a $FILE
 
 # Copy to webserver pi
-rsync --ignore-existing --recursive ./images/* pi@server01.wouterdeschuyter.be:~/docker/sites/be.wouterdeschuyter.avocado/public/images
+rsync --ignore-existing --recursive ./images/* pi@server01.wouterdeschuyter.be:~/docker/sites/be.wouterdeschuyter.avocado/images
