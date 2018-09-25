@@ -49,7 +49,9 @@ class ImagesContext extends Component<Props, State> {
     });
 
     // Average image size
-    const averageSize = images.reduce((total: number, image: Image) => total + image.size, 0) / images.length;
+    const averageSize =
+      images.reduce((total: number, image: Image) => total + image.size, 0) /
+      images.length;
 
     // Filter out images below average "quality"
     images = images.filter((image: Image) => image.size > averageSize);
