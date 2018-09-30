@@ -3,10 +3,6 @@
 .container {
   height: 100%;
   width: 100%;
-  background-image: url('images/avocado-logo-small.png');
-  background-repeat: no-repeat;
-  background-size: 69.5px 54px;
-  background-position: right 25px bottom 25px;
 }
 
 .content {
