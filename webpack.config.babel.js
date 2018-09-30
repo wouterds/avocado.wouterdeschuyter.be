@@ -26,9 +26,10 @@ let config = {
   resolve: {
     extensions: ['.js'],
     modules: [
-      path.resolve('./src'),
-      path.resolve('./resources'),
       path.resolve('./node_modules'),
+      path.resolve('./resources'),
+      path.resolve('./public'),
+      path.resolve('./src'),
     ],
   },
   module: {
@@ -113,7 +114,7 @@ let config = {
       ),
     }),
     new FaviconsWebpackPlugin({
-      logo: './resources/images/avocado.png',
+      logo: path.resolve(__dirname, './resources/images/avocado.png'),
       prefix: '[hash:7]-',
     }),
   ],
