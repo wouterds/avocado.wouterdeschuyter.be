@@ -1,0 +1,27 @@
+@import 'variables';
+
+.container {
+  display: inline-block;
+}
+
+.loaderContainer {
+  background: var(--color-light-gray);
+  mask-image: url('images/avocado-logo.svg');
+  mask-size: 128.7px 100px;
+  width: 128.7px;
+  height: 100px;
+  position: relative;
+}
+
+.loader {
+  background: var(--color-brown);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0%;
+}
+
+.loadingImage {
+  display: none;
+}
