@@ -38,6 +38,9 @@ class App extends Component<Props, State> {
             Here I try to keep track of the growth and progress of my avocado
             plant, not much more to see!
           </p>
+          <p>
+            <a href="./images">Images</a>
+          </p>
         </div>
       </div>
     );
