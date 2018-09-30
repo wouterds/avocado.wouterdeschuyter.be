@@ -27,7 +27,7 @@ class Preloader extends Component<Props, State> {
       return 0;
     }
 
-    return (loadedImages.length / images.length) * 100;
+    return ((loadedImages.length / images.length) * 100).toFixed();
   }
 
   componentDidUpdate() {
