@@ -1,8 +1,15 @@
 @import 'variables';
 
-.container {
+.container,
+.loadingContainer {
   height: 100%;
   width: 100%;
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .content {
