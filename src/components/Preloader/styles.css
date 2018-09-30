@@ -20,6 +20,7 @@
   left: 0;
   right: 0;
   height: 0%;
+  transition: height 250ms ease-out;
 }
 
 .loadingImage {
