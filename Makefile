@@ -16,10 +16,10 @@ clean:
 	-rm -rf ./.build-*
 
 node_modules: package.json
-	docker run --rm -v $(PWD):/code -v ~/.ssh:/root/.ssh:ro -w /code node:8 npm install
+	docker run --rm -v $(PWD):/code -v ~/.ssh:/root/.ssh:ro -w /code node:9 npm install
 
 .build-app: node_modules
-	docker run --rm -v $(PWD):/code -w /code node:8 npm run build
+	docker run --rm -v $(PWD):/code -w /code node:9 npm run build
 	touch .build-app
 
 .build-nginx: $(DOCKERFILE_NGINX)
