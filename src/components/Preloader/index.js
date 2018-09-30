@@ -6,7 +6,8 @@ import { Context } from '../../context/Images';
 import styles from './styles.css';
 
 type Props = {
-  images: Images,
+  images?: Images,
+  onDone: Function,
 };
 
 type State = {
@@ -27,6 +28,17 @@ class Preloader extends Component<Props, State> {
     }
 
     return (loadedImages.length / images.length) * 100;
+  }
+
+  componentDidUpdate() {
+    const { images = [], onDone } = this.props;
+    const { images: loadedImages = [] } = this.state;
+
+    if (images.length !== loadedImages.length) {
+      return;
+    }
+
+    setTimeout(onDone, 500);
   }
 
   render(): Node {
@@ -64,10 +76,10 @@ class Preloader extends Component<Props, State> {
   };
 }
 
-const EnhancedPreloader = (): Node => {
+const EnhancedPreloader = (props: Props): Node => {
   return (
     <Context.Consumer>
-      {images => <Preloader images={images || []} />}
+      {images => <Preloader {...props} images={images || []} />}
     </Context.Consumer>
   );
 };
