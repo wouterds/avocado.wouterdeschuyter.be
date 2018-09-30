@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import type { Node } from 'react';
 import axios from 'axios';
 import type { Images, Image } from 'types/Image';
-import { API_ENDPOINT } from 'config';
+import { API_ENDPOINT, IMAGE_LOCATION } from 'config';
 
 type Props = {
   children: Node,
@@ -36,16 +36,18 @@ class ImagesContext extends Component<Props, State> {
     const response = await axios.get(API_ENDPOINT);
 
     let images: Images = response.data.map(data => {
-      const { name, size } = data;
+      const { name: filename, size } = data;
 
-      const year = name.substr(0, 4);
-      const month = name.substr(4, 2);
-      const day = name.substr(6, 2);
-      const hour = name.substr(8, 2);
-      const minute = name.substr(10, 2);
+      const year = filename.substr(0, 4);
+      const month = filename.substr(4, 2);
+      const day = filename.substr(6, 2);
+      const hour = filename.substr(8, 2);
+      const minute = filename.substr(10, 2);
       const time = new Date(`${year}-${month}-${day} ${hour}:${minute} UTC`);
 
-      return { filename: name, size, time };
+      const url = `${IMAGE_LOCATION}/${filename}`;
+
+      return { filename, url, size, time };
     });
 
     // Average image size

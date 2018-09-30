@@ -51,12 +51,7 @@ class Movie extends Component<Props, State> {
       return null;
     }
 
-    return (
-      <img
-        src={`${IMAGE_LOCATION}/${image.filename}`}
-        onLoad={() => this.next()}
-      />
-    );
+    return <img src={image.url} onLoad={() => this.next()} />;
   }
 }
 
