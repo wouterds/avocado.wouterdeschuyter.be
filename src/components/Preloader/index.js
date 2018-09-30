@@ -1,7 +1,7 @@
 //@flow
 import React, { Component } from 'react';
 import type { Node } from 'react';
-import type { Image, Images } from 'types/image';
+import type { Image, Images } from 'types/Image';
 import { Context } from '../../context/Images';
 import styles from './styles.css';
 
