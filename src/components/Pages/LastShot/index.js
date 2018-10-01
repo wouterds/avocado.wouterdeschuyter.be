@@ -1,23 +1,43 @@
 //@flow
 import React, { Component } from 'react';
 import type { Node } from 'react';
+import type { Images } from 'types/Image';
 import Header from 'components/Header';
+import { Context } from 'context/Images';
 import styles from './styles.css';
 
-type Props = {};
+type Props = {
+  images: Images,
+};
 
 class LastShot extends Component<Props> {
   render(): Node {
+    const { images } = this.props;
+
+    if (images.length === 0) {
+      return null;
+    }
+
+    const image = images[images.length - 1];
+
     return (
       <div className={styles.container}>
         <Header />
 
         <div className={styles.content}>
-          <p>LastShot</p>
+          <img src={image.url} />;
         </div>
       </div>
     );
   }
 }
 
-export default LastShot;
+const EnhancedLastShot = (): Node => {
+  return (
+    <Context.Consumer>
+      {images => <LastShot images={images || []} />}
+    </Context.Consumer>
+  );
+};
+
+export default EnhancedLastShot;
