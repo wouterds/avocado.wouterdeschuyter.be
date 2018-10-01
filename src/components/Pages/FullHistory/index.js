@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import type { Node } from 'react';
 import Header from 'components/Header';
+import Movie from 'components/Movie';
 import styles from './styles.css';
 
 type Props = {};
@@ -13,7 +14,7 @@ class FullHistory extends Component<Props> {
         <Header />
 
         <div className={styles.content}>
-          <p>FullHistory</p>
+          <Movie />
         </div>
       </div>
     );

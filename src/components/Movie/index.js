@@ -17,22 +17,20 @@ class Movie extends Component<Props, State> {
     image: null,
   };
 
-  componentDidUpdate() {
-    const { images } = this.props;
-    const { image } = this.state;
-
-    if (images.length === 0 || image !== null) {
-      return;
-    }
-
+  componentDidMount() {
     this.next();
   }
 
-  next() {
+  next = () => {
     const { images } = this.props;
     const { image } = this.state;
 
     const index = images.indexOf(image) + 1;
+
+    if (images.length === 0) {
+      setTimeout(this.next, 250);
+      return;
+    }
 
     if (index === images.length) {
       return;
@@ -41,7 +39,7 @@ class Movie extends Component<Props, State> {
     setTimeout(() => {
       this.setState({ image: images[index] });
     }, 25);
-  }
+  };
 
   render(): Node {
     const { image } = this.state;
