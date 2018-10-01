@@ -1,8 +1,10 @@
 //@flow
 import React, { Component } from 'react';
 import type { Node } from 'react';
-import Header from 'components/Header';
+import { Switch, Router, Route } from 'react-router-dom';
+import createHistory from 'history/createBrowserHistory';
 import Preloader from 'components/Preloader';
+import Pages from 'components/Pages';
 import styles from './styles.css';
 
 type Props = {};
@@ -28,21 +30,11 @@ class App extends Component<Props, State> {
     }
 
     return (
-      <div className={styles.container}>
-        <Header />
-
-        <div className={styles.content}>
-          <p>
-            Hi there 👋
-            <br />
-            Here I try to keep track of the growth and progress of my avocado
-            plant, not much more to see!
-          </p>
-          <p>
-            <a href="./images">Images</a>
-          </p>
-        </div>
-      </div>
+      <Router history={createHistory()}>
+        <Switch>
+          <Route path="/" component={Pages.Landing} />
+        </Switch>
+      </Router>
     );
   }
 }
