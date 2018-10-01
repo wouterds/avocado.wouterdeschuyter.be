@@ -23,6 +23,9 @@ class App extends Component<Props> {
           <Link className={styles.link} to="/full-history">
             Full history
           </Link>
+          <a className={styles.link} href="/images">
+            Raw
+          </a>
         </nav>
       </div>
     );
