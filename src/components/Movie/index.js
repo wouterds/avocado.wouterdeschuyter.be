@@ -1,7 +1,6 @@
 //@flow
 import React, { Component } from 'react';
 import type { Node } from 'react';
-import { IMAGE_LOCATION } from 'config';
 import { Context } from '../../context/Images';
 import type { Image, Images } from 'types/Image';
 
