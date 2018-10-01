@@ -32,7 +32,7 @@ rm ./adafruit-pitft.sh
 Add this to crontab to take a picture every 15 minutes.
 
 ```bash
-*/15 * * * * /home/pi/avocado.wouterdeschuyter.be/camera-app/picture.sh > /dev/null 2>&1
+*/5 * * * * /home/pi/avocado.wouterdeschuyter.be/camera-app/picture.sh > /dev/null 2>&1
 ```
 
 ## Web app
