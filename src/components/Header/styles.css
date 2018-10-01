@@ -2,9 +2,13 @@
 
 .container {
   padding: 50px 75px;
+  display: flex;
 }
 
 .title {
+  text-decoration: none;
+  color: var(--color-gray);
+
   &:after {
     content: '';
     width: 35px;
@@ -13,5 +17,27 @@
     display: block;
     margin-top: 5px;
     opacity: 0.2;
+  }
+}
+
+.nav {
+  flex: 1;
+  text-align: right;
+  padding-top: 15px;
+}
+
+.link {
+  font-size: 1.6rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-light-gray);
+
+  &:hover {
+    color: var(--color-gray);
+  }
+
+  + .link {
+    margin-left: 35px;
   }
 }

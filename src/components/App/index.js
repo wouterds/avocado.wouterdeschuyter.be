@@ -32,7 +32,10 @@ class App extends Component<Props, State> {
     return (
       <Router history={createHistory()}>
         <Switch>
-          <Route path="/" component={Pages.Landing} />
+          <Route exact path="/" component={Pages.Landing} />
+          <Route path="/last-shot" component={Pages.LastShot} />
+          <Route path="/last-day" component={Pages.LastDay} />
+          <Route path="/full-history" component={Pages.FullHistory} />
         </Switch>
       </Router>
     );
