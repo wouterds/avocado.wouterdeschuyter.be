@@ -27,6 +27,6 @@ h6 {
   font-weight: var(--font-weight-bold);
 }
 
-p + p {
-  margin-top: 15px;
+p {
+  margin-bottom: 15px;
 }
