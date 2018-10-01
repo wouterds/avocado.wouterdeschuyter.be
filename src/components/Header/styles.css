@@ -1,7 +1,7 @@
 @import 'variables';
 
 .container {
-  padding: 50px 75px;
+  padding: 25px 50px;
   display: flex;
 }
 
