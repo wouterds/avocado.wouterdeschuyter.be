@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import type { Node } from 'react';
 import { Switch, Router, Route } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
+import { Provider } from 'react-redux';
+import store from 'store';
 import Preloader from 'components/Preloader';
 import Pages from 'components/Pages';
 import styles from './styles.css';
@@ -30,16 +32,18 @@ class App extends Component<Props, State> {
     }
 
     return (
-      <div className={styles.container}>
-        <Router history={createHistory()}>
-          <Switch>
-            <Route exact path="/" component={Pages.Landing} />
-            <Route path="/last-shot" component={Pages.LastShot} />
-            <Route path="/last-day" component={Pages.LastDay} />
-            <Route path="/full-history" component={Pages.FullHistory} />
-          </Switch>
-        </Router>
-      </div>
+      <Provider store={store}>
+        <div className={styles.container}>
+          <Router history={createHistory()}>
+            <Switch>
+              <Route exact path="/" component={Pages.Landing} />
+              <Route path="/last-shot" component={Pages.LastShot} />
+              <Route path="/last-day" component={Pages.LastDay} />
+              <Route path="/full-history" component={Pages.FullHistory} />
+            </Switch>
+          </Router>
+        </div>
+      </Provider>
     );
   }
 }
