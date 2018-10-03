@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import type { Node } from 'react';
 import { Context } from '../../context/Images';
-import type { Image, Images } from 'types/Image';
+import type { Image, Images } from 'store/Images/types';
 
 type Props = {
   images: Images,

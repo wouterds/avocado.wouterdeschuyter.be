@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import type { Node } from 'react';
 import axios from 'axios';
-import type { Images, Image } from 'types/Image';
+import type { Images, Image } from 'store/Images/types';
 import { API_ENDPOINT, IMAGE_LOCATION } from 'config';
 
 type Props = {
