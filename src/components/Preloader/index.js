@@ -1,17 +1,17 @@
 //@flow
 import React, { Component } from 'react';
 import type { Node } from 'react';
-import type { Image, Images } from 'store/Images/types';
+import type { Image } from 'store/Images/types';
 import { Context } from '../../context/Images';
 import styles from './styles.css';
 
 type Props = {
-  images?: Images,
+  images?: Image[],
   onDone: Function,
 };
 
 type State = {
-  images: Images,
+  images: Image[],
 };
 
 class Preloader extends Component<Props, State> {

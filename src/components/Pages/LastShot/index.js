@@ -1,13 +1,13 @@
 //@flow
 import React, { Component } from 'react';
 import type { Node } from 'react';
-import type { Images } from 'store/Images/types';
+import type { Image } from 'store/Images/types';
 import Header from 'components/Header';
 import { Context } from 'context/Images';
 import styles from './styles.css';
 
 type Props = {
-  images: Images,
+  images: Image[],
 };
 
 class LastShot extends Component<Props> {

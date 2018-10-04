@@ -5,5 +5,3 @@ export type Image = {
   time: Date,
   size: number,
 };
-
-export type Images = Array<Image>;

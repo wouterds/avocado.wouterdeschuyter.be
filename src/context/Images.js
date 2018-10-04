@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import type { Node } from 'react';
 import axios from 'axios';
-import type { Images, Image } from 'store/Images/types';
+import type { Image } from 'store/Images/types';
 import { API_ENDPOINT, IMAGE_LOCATION } from 'config';
 
 type Props = {
@@ -10,7 +10,7 @@ type Props = {
 };
 
 type State = {
-  images: Images,
+  images: Image[],
 };
 
 export const Context = React.createContext();
@@ -35,7 +35,7 @@ class ImagesContext extends Component<Props, State> {
   fetch = async () => {
     const response = await axios.get(API_ENDPOINT);
 
-    let images: Images = response.data.map(data => {
+    let images: Image[] = response.data.map(data => {
       const { name: filename, size } = data;
 
       const year = filename.substr(0, 4);

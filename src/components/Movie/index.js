@@ -2,10 +2,10 @@
 import React, { Component } from 'react';
 import type { Node } from 'react';
 import { Context } from '../../context/Images';
-import type { Image, Images } from 'store/Images/types';
+import type { Image } from 'store/Images/types';
 
 type Props = {
-  images: Images,
+  images: Image[],
 };
 
 type State = {
