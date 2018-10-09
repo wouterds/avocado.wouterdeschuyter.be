@@ -3,6 +3,7 @@ import { LoaderOptionsPlugin, DefinePlugin, optimize } from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import FlowBabelWebpackPlugin from 'flow-babel-webpack-plugin';
 import FaviconsWebpackPlugin from 'favicons-webpack-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 const production = process.env.NODE_ENV === 'production';
 
@@ -134,6 +135,12 @@ if (!production) {
     port: 8080,
     historyApiFallback: true,
   };
+
+  config.plugins.push(new BundleAnalyzerPlugin({
+    analyzerMode: 'static',
+    reportFilename: path.resolve(__dirname, './public/report.html'),
+    openAnalyzer: false,
+  }));
 }
 
 
