@@ -131,7 +131,5 @@ export default (env, argv) => {
     };
   }
 
-  console.log({ isProduction });
-
   return config;
 };
