@@ -14,7 +14,9 @@ const EMPTY_STATE: State = {
 };
 
 export default (state: State = EMPTY_STATE, action: Object) => {
-  switch (action.type) {
+  const { type, payload } = action;
+
+  switch (type) {
     case FETCH:
       return {
         ...state,
@@ -22,10 +24,13 @@ export default (state: State = EMPTY_STATE, action: Object) => {
         hasError: false,
       };
     case FETCH_SUCCESS:
+      const { images } = payload;
+
       return {
         ...state,
         isLoading: false,
         hasError: false,
+        images,
       };
     case FETCH_ERROR:
       return {
