@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "start": "npm run dev",
-    "dev": "./node_modules/.bin/webpack --watch --colors",
-    "hot": "./node_modules/.bin/webpack-dev-server --open --hot --inline --colors",
-    "build": "NODE_ENV=production ./node_modules/.bin/webpack --progress --display-error-details --colors",
+    "dev": "./node_modules/.bin/webpack --mode development --watch --colors",
+    "hot": "./node_modules/.bin/webpack-dev-server --mode production --open --hot --inline --colors",
+    "build": "./node_modules/.bin/webpack --progress --mode production --display-error-details --colors",
     "lint": "./node_modules/.bin/eslint ./src",
     "lint:fix": "./node_modules/.bin/eslint --fix ./src"
   },
