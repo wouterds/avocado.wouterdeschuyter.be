@@ -9,7 +9,6 @@ const production = process.env.NODE_ENV === 'production';
 /*global __dirname: true*/
 
 let config = {
-  devtool: 'source-map',
   entry: {
     app: [
       'babel-polyfill',
@@ -113,20 +112,29 @@ let config = {
         production ? 'production' : 'development',
       ),
     }),
-    new FaviconsWebpackPlugin({
-      logo: path.resolve(__dirname, './resources/images/avocado.png'),
-      prefix: '[hash:7]-',
-    }),
   ],
-  devServer: {
+};
+
+// Production specific
+if (production) {
+  config.plugins.push(new optimize.UglifyJsPlugin());
+
+  config.plugins.push(new FaviconsWebpackPlugin({
+    logo: path.resolve(__dirname, './resources/images/avocado.png'),
+    prefix: '[hash:7]-',
+  }));
+}
+
+// Development specific
+if (!production) {
+  config.devtool = 'source-map';
+
+  config.devServer = {
     contentBase: path.resolve(__dirname, './public'),
     port: 8080,
     historyApiFallback: true,
-  },
-};
-
-if (production) {
-  config.plugins.push(new optimize.UglifyJsPlugin());
+  };
 }
+
 
 export default config;
