@@ -1,7 +1,8 @@
 //@flow
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ImagesContext from 'context/Images';
+import { Provider } from 'react-redux';
+import store from 'store';
 import App from 'components/App';
 import 'styles/core.css';
 
@@ -13,9 +14,9 @@ const boot = () => {
   }
 
   ReactDOM.render(
-    <ImagesContext>
+    <Provider store={store}>
       <App />
-    </ImagesContext>,
+    </Provider>,
     indexElement,
   );
 };
