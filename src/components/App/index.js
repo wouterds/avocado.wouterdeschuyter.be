@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import type { Node } from 'react';
 import { Switch, Router, Route } from 'react-router-dom';
-import Preloader from 'components/Preloader';
 import Pages from 'components/Pages';
 import wrapImages from 'store/Images/container';
 import styles from './styles.css';
@@ -13,26 +12,9 @@ type Props = {
   history: History,
 };
 
-type State = {
-  isLoaded: boolean,
-};
-
-class App extends Component<Props, State> {
-  state: State = {
-    isLoaded: false,
-  };
-
+class App extends Component<Props> {
   render(): Node {
     const { history } = this.props;
-    const { isLoaded } = this.state;
-
-    if (!isLoaded) {
-      return (
-        <div className={styles.loadingContainer}>
-          <Preloader onDone={() => this.setState({ isLoaded: true })} />
-        </div>
-      );
-    }
 
     return (
       <div className={styles.container}>
