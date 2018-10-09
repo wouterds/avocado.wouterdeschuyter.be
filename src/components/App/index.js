@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import type { Node } from 'react';
 import { Switch, Router, Route } from 'react-router-dom';
-import createHistory from 'history/createBrowserHistory';
 import Preloader from 'components/Preloader';
 import Pages from 'components/Pages';
 import wrapImages from 'store/Images/container';
@@ -11,6 +10,7 @@ import styles from './styles.css';
 type Props = {
   isLoading: boolean,
   hasError: boolean,
+  history: History,
 };
 
 type State = {
@@ -23,7 +23,7 @@ class App extends Component<Props, State> {
   };
 
   render(): Node {
-    const { isLoading } = this.props;
+    const { history } = this.props;
     const { isLoaded } = this.state;
 
     if (!isLoaded) {
@@ -36,7 +36,7 @@ class App extends Component<Props, State> {
 
     return (
       <div className={styles.container}>
-        <Router history={createHistory()}>
+        <Router history={history}>
           <Switch>
             <Route exact path="/" component={Pages.Landing} />
             <Route path="/last-shot" component={Pages.LastShot} />

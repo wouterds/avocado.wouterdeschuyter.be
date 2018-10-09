@@ -2,6 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import createHistory from 'history/createBrowserHistory';
 import store from 'store';
 import App from 'components/App';
 import 'styles/core.css';
@@ -15,7 +16,7 @@ const boot = () => {
 
   ReactDOM.render(
     <Provider store={store}>
-      <App />
+      <App history={createHistory()} />
     </Provider>,
     indexElement,
   );
