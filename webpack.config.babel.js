@@ -11,7 +11,7 @@ export default (env, argv) => {
   let config = {
     entry: {
       app: [
-        'babel-polyfill',
+        '@babel/polyfill',
         'react-hot-loader/patch',
         path.resolve(__dirname, './src/index.js'),
       ],
