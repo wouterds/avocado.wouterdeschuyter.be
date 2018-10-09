@@ -33,7 +33,6 @@
     "babel-loader": "^8.0.4",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-function-bind": "^6.22.0",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "classnames": "^2.2.5",
     "classnames-loader": "^2.0.0",
     "css-loader": "^1.0.0",
