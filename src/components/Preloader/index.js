@@ -31,15 +31,25 @@ class Preloader extends Component<Props, State> {
   }
 
   componentDidUpdate() {
+    this.start();
+  }
+
+  start = () => {
     const { images = [], onDone } = this.props;
     const { images: loadedImages = [] } = this.state;
+
+    // No images provided, wait
+    if (images.length === 0) {
+      this.timeoutId = setTimeout(this.start, 250);
+      return;
+    }
 
     if (images.length !== loadedImages.length) {
       return;
     }
 
     this.timeoutId = setTimeout(onDone, 250);
-  }
+  };
 
   componentWillUnmount() {
     if (this.timeoutId !== null) {
