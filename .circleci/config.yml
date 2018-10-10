@@ -1,0 +1,45 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:9
+
+    working_directory: ~/repo
+
+    steps:
+    # Checkout source code
+    - restore_cache:
+        keys:
+          - source-v1-{{ .Branch }}-{{ .Revision }}
+          - source-v1-{{ .Branch }}-
+          - source-v1-
+    - checkout
+    - save_cache:
+        key: source-v1-{{ .Branch }}-{{ .Revision }}
+        paths:
+        - ".git"
+
+    # Download and cache dependencies
+    - restore_cache:
+        keys:
+        - v1-dependencies-{{ checksum "package.json" }}
+        # fallback to using the latest cache if no exact match is found
+        - v1-dependencies-
+    - run: npm install
+    - save_cache:
+        paths:
+        - node_modules
+        key: v1-dependencies-{{ checksum "package.json" }}
+
+    # run code-style checks
+    - run: npm run lint
+
+    # try to build
+    - run: npm run build:ci
+
+experimental:
+  notify:
+    branches:
+      only:
+        - develop
+        - master
