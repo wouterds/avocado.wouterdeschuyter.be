@@ -14,6 +14,7 @@ type State = {
 };
 
 class Preloader extends Component<Props, State> {
+  timeoutId: ?TimeoutID = null;
   state: State = {
     images: [],
   };
@@ -37,7 +38,13 @@ class Preloader extends Component<Props, State> {
       return;
     }
 
-    setTimeout(onDone, 250);
+    this.timeoutId = setTimeout(onDone, 250);
+  }
+
+  componentWillUnmount() {
+    if (this.timeoutId !== null) {
+      clearTimeout(this.timeoutId);
+    }
   }
 
   render(): Node {

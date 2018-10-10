@@ -12,12 +12,19 @@ type State = {
 };
 
 class Clip extends Component<Props, State> {
+  timeoutId: ?TimeoutID;
   state: State = {
     image: null,
   };
 
   componentDidMount() {
     this.next();
+  }
+
+  componentWillUnmount() {
+    if (this.timeoutId !== null) {
+      clearTimeout(this.timeoutId);
+    }
   }
 
   next = () => {
@@ -27,7 +34,7 @@ class Clip extends Component<Props, State> {
     const index = images.indexOf(image) + 1;
 
     if (images.length === 0) {
-      setTimeout(this.next, 250);
+      this.timeoutId = setTimeout(this.next, 250);
       return;
     }
 
@@ -35,7 +42,7 @@ class Clip extends Component<Props, State> {
       return;
     }
 
-    setTimeout(() => {
+    this.timeoutId = setTimeout(() => {
       this.setState({ image: images[index] });
     }, (1 / 30) * 1000); // 30 FPS
   };
