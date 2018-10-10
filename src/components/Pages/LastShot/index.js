@@ -4,7 +4,7 @@ import type { Node } from 'react';
 import cx from 'classnames';
 import type { Image } from 'store/Images/types';
 import Header from 'components/Header';
-import Preloader from 'components/Preloader';
+import PreLoader from 'components/PreLoader';
 import wrapLastShot from './container';
 import styles from './styles.css';
 
@@ -31,7 +31,7 @@ class LastShot extends Component<Props, State> {
 
         <div className={styles.content}>
           {!isLoaded && (
-            <Preloader
+            <PreLoader
               images={[image]}
               onDone={() => this.setState({ isLoaded: true })}
             />

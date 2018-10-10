@@ -4,7 +4,7 @@ import type { Node } from 'react';
 import cx from 'classnames';
 import type { Image } from 'store/Images/types';
 import Header from 'components/Header';
-import Preloader from 'components/Preloader';
+import PreLoader from 'components/PreLoader';
 import Clip from 'components/Clip';
 import wrapLastDay from './container';
 import styles from './styles.css';
@@ -32,7 +32,7 @@ class LastDay extends Component<Props, State> {
 
         <div className={styles.content}>
           {!isLoaded && (
-            <Preloader
+            <PreLoader
               images={images}
               onDone={() => this.setState({ isLoaded: true })}
             />
