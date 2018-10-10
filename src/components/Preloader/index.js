@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import type { Node } from 'react';
 import type { Image } from 'store/Images/types';
-import { Context } from '../../context/Images';
 import styles from './styles.css';
 
 type Props = {
@@ -38,7 +37,7 @@ class Preloader extends Component<Props, State> {
       return;
     }
 
-    setTimeout(onDone, 500);
+    setTimeout(onDone, 250);
   }
 
   render(): Node {
@@ -76,12 +75,4 @@ class Preloader extends Component<Props, State> {
   };
 }
 
-const EnhancedPreloader = (props: Props): Node => {
-  return (
-    <Context.Consumer>
-      {images => <Preloader {...props} images={images || []} />}
-    </Context.Consumer>
-  );
-};
-
-export default EnhancedPreloader;
+export default Preloader;
