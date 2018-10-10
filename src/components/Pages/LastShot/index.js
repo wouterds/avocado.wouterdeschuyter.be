@@ -19,7 +19,7 @@ class LastShot extends Component<Props> {
         <Header />
 
         <div className={styles.content}>
-          <img src={image.url} />;
+          <img src={image.url} />
         </div>
       </div>
     );
