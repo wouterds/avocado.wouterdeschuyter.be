@@ -2,7 +2,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { differenceInHours, endOfToday } from 'date-fns';
+import differenceInHours from 'date-fns/difference_in_hours';
+import endOfToday from 'date-fns/end_of_today';
 import { getImages } from 'store/Images/selectors';
 import type { Image } from 'store/Images/types';
 
