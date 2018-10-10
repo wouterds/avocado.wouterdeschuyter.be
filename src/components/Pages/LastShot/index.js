@@ -1,8 +1,10 @@
 //@flow
 import React, { Component } from 'react';
 import type { Node } from 'react';
+import cx from 'classnames';
 import type { Image } from 'store/Images/types';
 import Header from 'components/Header';
+import Preloader from 'components/Preloader';
 import wrapLastShot from './container';
 import styles from './styles.css';
 
@@ -10,16 +12,32 @@ type Props = {
   image: Image,
 };
 
-class LastShot extends Component<Props> {
+type State = {
+  isLoaded: boolean,
+};
+
+class LastShot extends Component<Props, State> {
+  state: State = {
+    isLoaded: false,
+  };
+
   render(): Node {
+    const { isLoaded } = this.state;
     const { image } = this.props;
 
     return (
-      <div className={styles.container}>
+      <div className={cx(styles.container, { [styles.loading]: !isLoaded })}>
         <Header />
 
         <div className={styles.content}>
-          <img src={image.url} />
+          {!isLoaded && (
+            <Preloader
+              images={[image]}
+              onDone={() => this.setState({ isLoaded: true })}
+            />
+          )}
+
+          {isLoaded && <img src={image.url} />}
         </div>
       </div>
     );
