@@ -1,7 +1,6 @@
 //@flow
 import React, { Component } from 'react';
 import type { Node } from 'react';
-import { Context } from '../../context/Images';
 import type { Image } from 'store/Images/types';
 
 type Props = {
@@ -12,7 +11,7 @@ type State = {
   image: ?Image,
 };
 
-class Movie extends Component<Props, State> {
+class Clip extends Component<Props, State> {
   state: State = {
     image: null,
   };
@@ -38,13 +37,13 @@ class Movie extends Component<Props, State> {
 
     setTimeout(() => {
       this.setState({ image: images[index] });
-    }, 25);
+    }, (1 / 30) * 1000); // 30 FPS
   };
 
   render(): Node {
     const { image } = this.state;
 
-    if (!image || image === null) {
+    if (!image) {
       return null;
     }
 
@@ -52,12 +51,4 @@ class Movie extends Component<Props, State> {
   }
 }
 
-const EnhancedMovie = (): Node => {
-  return (
-    <Context.Consumer>
-      {images => <Movie images={images || []} />}
-    </Context.Consumer>
-  );
-};
-
-export default EnhancedMovie;
+export default Clip;
