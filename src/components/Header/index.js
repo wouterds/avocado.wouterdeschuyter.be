@@ -17,8 +17,8 @@ class App extends Component<Props> {
           <Link className={styles.link} to="/last-shot">
             Last shot
           </Link>
-          <Link className={styles.link} to="/last-day">
-            Last day
+          <Link className={styles.link} to="/last-24-hours">
+            Last 24H
           </Link>
           <Link className={styles.link} to="/full-history">
             Full history

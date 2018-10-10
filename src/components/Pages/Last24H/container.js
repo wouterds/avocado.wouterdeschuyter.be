@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import differenceInHours from 'date-fns/difference_in_hours';
-import endOfToday from 'date-fns/end_of_today';
 import { getImages } from 'store/Images/selectors';
 import type { Image } from 'store/Images/types';
 
@@ -11,13 +10,13 @@ type Props = {
   images: Image[],
 };
 
-const wrapLastDay = (WrappedComponent: any) => {
-  class LastDay extends Component<Props> {
+const wrapLast24H = (WrappedComponent: any) => {
+  class Last24H extends Component<Props> {
     render() {
       let { images } = this.props;
 
       images = images.filter(
-        image => differenceInHours(endOfToday(), image.time) <= 24,
+        image => differenceInHours(new Date(), image.time) <= 24,
       );
 
       return <WrappedComponent images={images} />;
@@ -29,7 +28,7 @@ const wrapLastDay = (WrappedComponent: any) => {
       images: getImages,
     })(state);
 
-  return connect(mapStateToProps)(LastDay);
+  return connect(mapStateToProps)(Last24H);
 };
 
-export default wrapLastDay;
+export default wrapLast24H;

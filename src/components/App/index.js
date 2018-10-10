@@ -22,7 +22,7 @@ class App extends Component<Props> {
           <Switch>
             <Route exact path="/" component={Pages.Landing} />
             <Route path="/last-shot" component={Pages.LastShot} />
-            <Route path="/last-day" component={Pages.LastDay} />
+            <Route path="/last-24-hours" component={Pages.Last24H} />
             <Route path="/full-history" component={Pages.FullHistory} />
           </Switch>
         </Router>

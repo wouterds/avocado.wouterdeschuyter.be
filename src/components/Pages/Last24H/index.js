@@ -6,7 +6,7 @@ import type { Image } from 'store/Images/types';
 import Header from 'components/Header';
 import PreLoader from 'components/PreLoader';
 import Clip from 'components/Clip';
-import wrapLastDay from './container';
+import wrapLast24H from './container';
 import styles from './styles.css';
 
 type Props = {
@@ -17,7 +17,7 @@ type State = {
   isLoaded: boolean,
 };
 
-class LastDay extends Component<Props, State> {
+class Last24H extends Component<Props, State> {
   state: State = {
     isLoaded: false,
   };
@@ -45,4 +45,4 @@ class LastDay extends Component<Props, State> {
   }
 }
 
-export default wrapLastDay(LastDay);
+export default wrapLast24H(Last24H);
