@@ -2,6 +2,7 @@
 import { createSelector } from 'reselect';
 import type { State } from './reducer';
 import type { Image } from './types';
+import sumBy from 'lodash/sumBy';
 
 export const selectSettings = (state: Object) => state.images;
 
@@ -18,6 +19,15 @@ export const getHasError = createSelector(
 export const getImages = createSelector(
   [selectSettings],
   (state: State) => state.images,
+);
+
+export const getAveragedOutImages = createSelector(
+  [getImages],
+  (images: Image[]) => {
+    const averageSize = sumBy(images, 'size') / images.length;
+
+    return images.filter(image => image.size > averageSize);
+  },
 );
 
 export const getHasData = createSelector(
