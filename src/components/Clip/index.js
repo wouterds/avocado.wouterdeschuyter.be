@@ -44,7 +44,7 @@ class Clip extends Component<Props, State> {
 
     this.timeoutId = setTimeout(() => {
       this.setState({ image: images[index] });
-    }, (1 / 30) * 1000); // 30 FPS
+    }, (1 / 60) * 1000); // 60 FPS
   };
 
   render(): Node {
