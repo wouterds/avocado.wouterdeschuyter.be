@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import differenceInHours from 'date-fns/difference_in_hours';
-import { getImages } from 'store/Images/selectors';
+import { getAveragedOutImages } from 'store/Images/selectors';
 import type { Image } from 'store/Images/types';
 
 type Props = {
@@ -25,7 +25,7 @@ const wrapLast24H = (WrappedComponent: any) => {
 
   const mapStateToProps = state =>
     createStructuredSelector({
-      images: getImages,
+      images: getAveragedOutImages,
     })(state);
 
   return connect(mapStateToProps)(Last24H);

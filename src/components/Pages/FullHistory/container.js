@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { getImages } from 'store/Images/selectors';
+import { getAveragedOutImages } from 'store/Images/selectors';
 import type { Image } from 'store/Images/types';
 
 type Props = {
@@ -18,7 +18,7 @@ const wrapFullHistory = (WrappedComponent: any) => {
 
   const mapStateToProps = state =>
     createStructuredSelector({
-      images: getImages,
+      images: getAveragedOutImages,
     })(state);
 
   return connect(mapStateToProps)(FullHistory);
