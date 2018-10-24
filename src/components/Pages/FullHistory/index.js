@@ -38,7 +38,7 @@ class FullHistory extends Component<Props, State> {
             />
           )}
 
-          {isLoaded && <Clip images={images} />}
+          {isLoaded && <Clip images={images} fps={60} />}
         </div>
       </div>
     );

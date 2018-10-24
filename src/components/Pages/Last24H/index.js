@@ -38,7 +38,7 @@ class Last24H extends Component<Props, State> {
             />
           )}
 
-          {isLoaded && <Clip images={images} />}
+          {isLoaded && <Clip images={images} fps={30} />}
         </div>
       </div>
     );

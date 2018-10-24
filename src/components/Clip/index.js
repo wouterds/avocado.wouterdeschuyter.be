@@ -5,6 +5,7 @@ import type { Image } from 'store/Images/types';
 
 type Props = {
   images: Image[],
+  fps: 30 | 45 | 60,
 };
 
 type State = {
@@ -28,7 +29,7 @@ class Clip extends Component<Props, State> {
   }
 
   next = () => {
-    const { images } = this.props;
+    const { images, fps } = this.props;
     const { image } = this.state;
 
     const index = images.indexOf(image) + 1;
@@ -44,7 +45,7 @@ class Clip extends Component<Props, State> {
 
     this.timeoutId = setTimeout(() => {
       this.setState({ image: images[index] });
-    }, (1 / 60) * 1000); // 60 FPS
+    }, (1 / fps) * 1000);
   };
 
   render(): Node {
