@@ -30,19 +30,14 @@ class LastShot extends Component<Props, State> {
         <Header />
 
         <div className={styles.content}>
-          {!image && 'Loading..'}
-          {image && (
-            <>
-              {!isLoaded && (
-                <PreLoader
-                  images={[image]}
-                  onDone={() => this.setState({ isLoaded: true })}
-                />
-              )}
-
-              {isLoaded && <img src={image.url} />}
-            </>
+          {!isLoaded && (
+            <PreLoader
+              images={[image]}
+              onDone={() => this.setState({ isLoaded: true })}
+            />
           )}
+
+          {isLoaded && <img src={image.url} />}
         </div>
       </div>
     );

@@ -2,7 +2,7 @@
 
 html,
 body,
-[id='index'] {
+[react-root] {
   height: 100%;
   width: 100%;
 }

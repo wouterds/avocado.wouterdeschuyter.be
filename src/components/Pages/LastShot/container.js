@@ -14,7 +14,11 @@ const wrapLastShot = (WrappedComponent: any) => {
     render() {
       const { images } = this.props;
 
-      const image = images.length === 0 ? images[images.length - 1] : null;
+      if (images.length === 0) {
+        return null;
+      }
+
+      const image = images[images.length - 1];
 
       return <WrappedComponent image={image} />;
     }
