@@ -1,6 +1,12 @@
 # avocado.wouterdeschuyter.be
 
-Simple app that takes a picture every 15 minutes of my future avocado plant using a [Raspberry Pi](https://www.raspberrypi.org/) & [a cheap webcam](https://www.ebay.com/itm/163188849225).
+![Tag)](https://img.shields.io/github/tag/wouterds/avocado.wouterdeschuyter.be.svg)
+![Code Size](https://img.shields.io/github/languages/code-size/wouterds/avocado.wouterdeschuyter.be.svg)
+![Last Commit](https://img.shields.io/github/last-commit/wouterds/avocado.wouterdeschuyter.be.svg)
+![CircleCI](https://circleci.com/gh/wouterds/avocado.wouterdeschuyter.be.svg?style=shield)
+![Dependencies](https://img.shields.io/david/wouterds/avocado.wouterdeschuyter.be.svg)
+
+Simple app that takes a picture every 5 minutes of my future avocado plant using a [Raspberry Pi](https://www.raspberrypi.org/) & [a cheap webcam](https://www.ebay.com/itm/163188849225).
 
 ![Poster](resources/images/github-poster.png?raw=true)
 
@@ -29,7 +35,7 @@ rm ./adafruit-pitft.sh
 
 ### Configure cron
 
-Add this to crontab to take a picture every 15 minutes.
+Add this to crontab to take a picture every 5 minutes.
 
 ```bash
 */5 * * * * /home/pi/avocado.wouterdeschuyter.be/camera-app/picture.sh > /dev/null 2>&1
