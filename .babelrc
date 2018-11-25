@@ -5,7 +5,8 @@
     "@babel/preset-flow"
   ],
   "plugins": [
-    "transform-function-bind",
-    "transform-class-properties"
+    "@babel/plugin-transform-runtime",
+    "@babel/plugin-proposal-function-bind",
+    "@babel/plugin-proposal-class-properties"
   ]
 }

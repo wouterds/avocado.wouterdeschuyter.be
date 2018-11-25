@@ -4,22 +4,17 @@ import FlowBabelWebpackPlugin from 'flow-babel-webpack-plugin';
 import FaviconsWebpackPlugin from 'favicons-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
-export default (env, argv) => {
-  const { mode } = argv;
+export default (env, { mode }) => {
   const isProduction = mode === 'production';
 
-  let config = {
+  const config = {
     entry: {
-      app: [
-        '@babel/polyfill',
-        'react-hot-loader/patch',
-        path.resolve(__dirname, './src/index.js'),
-      ],
+      bundle: './src/index.js',
     },
     output: {
-      path: path.resolve(__dirname, './public'),
-      filename: isProduction ? 'app.[hash:7].js' : 'app.js',
-      publicPath: '/',
+      path: path.resolve('./build/static'),
+      publicPath: '/static',
+      filename: isProduction ? '[hash:7].[name].js' : '[name].js',
     },
     resolve: {
       extensions: ['.js'],
@@ -45,10 +40,8 @@ export default (env, argv) => {
               loader: 'css-loader',
               options: {
                 modules: true,
-                importLoaders: 1,
-                localIdentName: isProduction
-                  ? '[hash:base64:7]'
-                  : '[name]-[local]-[hash:base64:7]',
+                importLoaders: true,
+                localIdentName: isProduction ? '[hash:7]' : '[name]-[local]-[hash:4]',
               },
             },
             {
@@ -73,12 +66,12 @@ export default (env, argv) => {
                   require('postcss-custom-media')(),
                   require('cssnano')(),
                 ],
-              }
+              },
             },
           ],
         },
         {
-          test: /\.(gif|jpe?g|png|ico)$/,
+          test: /\.(gif|jpe?g|png)$/,
           loader: 'url-loader',
           options: {
             limit: 25000,
@@ -87,10 +80,10 @@ export default (env, argv) => {
         },
         {
           test: /\.(ttf|otf|eot|svg|woff(2)?)$/,
-          loader: 'file-loader?name=fonts/[name].[ext]',
+          loader: 'file-loader',
           options: {
-            publicPath: '/',
             name: '[hash:7].[ext]',
+            publicPath: '/static/',
           },
         },
       ],
@@ -98,24 +91,22 @@ export default (env, argv) => {
     plugins: [
       new FlowBabelWebpackPlugin(),
       new HtmlWebpackPlugin({
-        filename: path.resolve(__dirname, './public/index.html'),
-        template: path.resolve(__dirname, './resources/index.html'),
+        template: './resources/index.html',
+        filename: path.resolve('./build/index.html'),
       }),
     ],
   };
 
   // Production specific
   if (isProduction) {
-    config.optimization = { minimize: true };
-
     config.plugins.push(new FaviconsWebpackPlugin({
-      logo: path.resolve(__dirname, './resources/images/avocado.png'),
+      logo: './resources/images/avocado.png',
       prefix: '[hash:7]-',
     }));
 
     config.plugins.push(new BundleAnalyzerPlugin({
       analyzerMode: 'static',
-      reportFilename: path.resolve(__dirname, './public/report.html'),
+      reportFilename: path.resolve('./build/report.html'),
       openAnalyzer: false,
     }));
   }
@@ -123,12 +114,6 @@ export default (env, argv) => {
   // Development specific
   if (!isProduction) {
     config.devtool = 'source-map';
-
-    config.devServer = {
-      contentBase: path.resolve(__dirname, './public'),
-      port: 8080,
-      historyApiFallback: true,
-    };
   }
 
   return config;
