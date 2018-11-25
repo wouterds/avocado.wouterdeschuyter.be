@@ -4,7 +4,7 @@
 cd "$(dirname "$0")"
 
 # Dynamic file name
-FILE=`date '+%Y%m%d%H%M'`.jpg
+FILE=`date '+%s'`.jpg
 FILE_PATH=./images/$FILE
 
 # Take picture
