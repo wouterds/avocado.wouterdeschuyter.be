@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+  nginx:
+    build:
+      context: ../
+      dockerfile: ./.docker/nginx/Dockerfile
+    volumes:
+      - ../build:/code/public
+    ports:
+      - '80:80'
+
+  node:
+    build:
+      context: ../
+      dockerfile: ./.docker/node/Dockerfile
+    volumes:
+      - ../:/code
