@@ -14,17 +14,11 @@ class App extends Component<Props> {
           <h1>Avocado Tracker</h1>
         </Link>
         <nav className={styles.nav}>
-          <Link className={styles.link} to="/last-shot">
-            Last shot
-          </Link>
-          <Link className={styles.link} to="/last-24-hours">
-            Last 24H
-          </Link>
-          <Link className={styles.link} to="/full-history">
-            Full history
-          </Link>
           <a className={styles.link} href="/images">
-            Raw
+            Images
+          </a>
+          <a className={styles.link} href="/videos">
+            Videos
           </a>
         </nav>
       </div>
