@@ -1,5 +1,4 @@
 .vscode/
 .git/
-node_modules/
-src/
-resources/
+images/
+videos/
