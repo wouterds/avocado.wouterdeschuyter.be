@@ -10,9 +10,17 @@ services:
       - LETSENCRYPT_EMAIL=wouter.de.schuyter@gmail.com
     volumes:
       - ./images:/code/public/images
+      - ./videos:/code/public/videos
     networks:
       - default
       - webproxy
+
+  node:
+    image: docker.wouterdeschuyter.be/avocado-tracker-node
+    restart: on-failure
+    volumes:
+      - ./images:/code/images
+      - ./videos:/code/videos
 
 networks:
   webproxy:
