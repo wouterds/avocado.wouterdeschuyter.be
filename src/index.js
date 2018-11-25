@@ -1,25 +1,22 @@
 //@flow
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
-import createHistory from 'history/createBrowserHistory';
 import store from 'store';
 import App from 'components/App';
 import 'styles/core.css';
 
-const boot = () => {
-  const indexElement = document.getElementById('index');
+(() => {
+  const index = document.getElementById('index');
 
-  if (!indexElement) {
+  if (!index) {
     return;
   }
 
-  ReactDOM.render(
+  hydrate(
     <Provider store={store}>
-      <App history={createHistory()} />
+      <App />
     </Provider>,
-    indexElement,
+    index,
   );
-};
-
-boot();
+})();
