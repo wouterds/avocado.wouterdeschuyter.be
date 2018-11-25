@@ -1,6 +1,7 @@
 .vscode/
 .build-*
 node_modules/
-public/
 package-lock.json
-camera-app/images/
+build/
+images/
+videos/
