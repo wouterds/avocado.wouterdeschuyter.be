@@ -52,34 +52,34 @@ class Server {
   }
 
   generateVideos = () => {
-    // Last 24 hours - delayed one minute
+    // Last 24 hours - delayed 1 minute
     setTimeout(
       () =>
         this.generateVideo(subHours(new Date(), 24), new Date(), 'LAST-DAY'),
       1 * 60 * 1000,
     );
 
-    // Last week - delayed 2 minutes
+    // Last week - delayed 5 minutes
     setTimeout(
       () => this.generateVideo(subDays(new Date(), 7), new Date(), 'LAST-WEEK'),
-      2 * 60 * 1000,
-    );
-
-    // Last month - delayed 5 minutes
-    setTimeout(
-      () =>
-        this.generateVideo(subDays(new Date(), 30), new Date(), 'LAST-MONTH'),
       5 * 60 * 1000,
     );
 
-    // All time - delayed 10 minutes
+    // Last month - delayed 15 minutes
     setTimeout(
-      () => this.generateVideo(this.images[0].date, new Date(), 'ALL-TIME'),
-      10 * 60 * 1000,
+      () =>
+        this.generateVideo(subDays(new Date(), 30), new Date(), 'LAST-MONTH'),
+      15 * 60 * 1000,
     );
 
-    // Generate again in one hour
-    setTimeout(this.generateVideos, 1000 * 60 * 60);
+    // All time - delayed 30 minutes
+    setTimeout(
+      () => this.generateVideo(this.images[0].date, new Date(), 'ALL-TIME'),
+      30 * 60 * 1000,
+    );
+
+    // Generate again in 4 hours
+    setTimeout(this.generateVideos, 1000 * 60 * 60 * 4);
   };
 
   generateVideo = async (from: Date, to: Date, name: string) => {
