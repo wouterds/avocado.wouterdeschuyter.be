@@ -55,44 +55,26 @@ class Server {
     // Last 24 hours - delayed one minute
     setTimeout(
       () =>
-        this.generateVideo(
-          subHours(new Date(), 24),
-          new Date(),
-          'videos/LAST-DAY.mp4',
-        ),
+        this.generateVideo(subHours(new Date(), 24), new Date(), 'LAST-DAY'),
       1 * 60 * 1000,
     );
 
     // Last week - delayed 2 minutes
     setTimeout(
-      () =>
-        this.generateVideo(
-          subDays(new Date(), 7),
-          new Date(),
-          'videos/LAST-WEEK.mp4',
-        ),
+      () => this.generateVideo(subDays(new Date(), 7), new Date(), 'LAST-WEEK'),
       2 * 60 * 1000,
     );
 
     // Last month - delayed 5 minutes
     setTimeout(
       () =>
-        this.generateVideo(
-          subDays(new Date(), 30),
-          new Date(),
-          'videos/LAST-MONTH.mp4',
-        ),
+        this.generateVideo(subDays(new Date(), 30), new Date(), 'LAST-MONTH'),
       5 * 60 * 1000,
     );
 
     // All time - delayed 10 minutes
     setTimeout(
-      () =>
-        this.generateVideo(
-          this.images[0].date,
-          new Date(),
-          'videos/ALL-TIME.mp4',
-        ),
+      () => this.generateVideo(this.images[0].date, new Date(), 'ALL-TIME'),
       10 * 60 * 1000,
     );
 
@@ -100,8 +82,11 @@ class Server {
     setTimeout(this.generateVideos, 1000 * 60 * 60);
   };
 
-  generateVideo = async (from: Date, to: Date, output: string) => {
-    const tmpFolder = `/tmp/${md5(output)}`;
+  generateVideo = async (from: Date, to: Date, name: string) => {
+    const tmpFolder = `/tmp/${md5(name)}`;
+    const extension = 'mp4';
+    const file = `videos/${name}.${extension}`;
+    const tempFile = `${file.split(`.${extension}`)[0]}.temp.mp4`;
 
     let i = 0;
     const images = this.images
@@ -139,11 +124,12 @@ class Server {
       fs.emptyDir(tmpFolder);
     });
     command.on('end', () => {
-      console.log(`Finished generating ${output}`);
-      fs.emptyDir(tmpFolder);
+      console.log(`Finished generating ${tempFile}`);
+      fs.emptyDirSync(tmpFolder);
+      fs.moveSync(tempFile, file, { overwrite: true });
     });
 
-    command.save(output);
+    command.save(tempFile);
   };
 }
 
