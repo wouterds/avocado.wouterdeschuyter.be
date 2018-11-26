@@ -1,6 +1,13 @@
 //@flow
 import fs from 'fs-extra';
-import { subHours, format, isBefore, isAfter, subDays } from 'date-fns';
+import {
+  subHours,
+  format,
+  isBefore,
+  isAfter,
+  subDays,
+  getTime,
+} from 'date-fns';
 import { sumBy } from 'lodash';
 import md5 from 'md5';
 import ffmpeg from 'fluent-ffmpeg';
@@ -54,27 +61,25 @@ class Server {
   generateVideos = () => {
     // Last 24 hours - delayed 1 minute
     setTimeout(
-      () =>
-        this.generateVideo(subHours(new Date(), 24), new Date(), 'LAST-DAY'),
+      () => this.generateVideo(subHours(new Date(), 24), new Date()),
       1 * 60 * 1000,
     );
 
     // Last week - delayed 5 minutes
     setTimeout(
-      () => this.generateVideo(subDays(new Date(), 7), new Date(), 'LAST-WEEK'),
+      () => this.generateVideo(subDays(new Date(), 7), new Date()),
       5 * 60 * 1000,
     );
 
     // Last month - delayed 15 minutes
     setTimeout(
-      () =>
-        this.generateVideo(subDays(new Date(), 30), new Date(), 'LAST-MONTH'),
+      () => this.generateVideo(subDays(new Date(), 30), new Date()),
       15 * 60 * 1000,
     );
 
     // All time - delayed 30 minutes
     setTimeout(
-      () => this.generateVideo(this.images[0].date, new Date(), 'ALL-TIME'),
+      () => this.generateVideo(this.images[0].date, new Date()),
       30 * 60 * 1000,
     );
 
@@ -82,11 +87,14 @@ class Server {
     setTimeout(this.generateVideos, 1000 * 60 * 60 * 4);
   };
 
-  generateVideo = async (from: Date, to: Date, name: string) => {
-    const tmpFolder = `/tmp/${md5(name)}`;
+  generateVideo = async (from: Date, to: Date) => {
+    const name = `${Math.round(getTime(from) / 1000)}-${Math.round(
+      getTime(to) / 1000,
+    )}`;
     const extension = 'mp4';
+    const tmpFolder = `/tmp/${name}`;
     const file = `videos/${name}.${extension}`;
-    const tempFile = `${file.split(`.${extension}`)[0]}.temp.mp4`;
+    const tmpFile = `videos/${name}.temp.${extension}`;
 
     let i = 0;
     const images = this.images
@@ -124,12 +132,12 @@ class Server {
       fs.emptyDir(tmpFolder);
     });
     command.on('end', () => {
-      console.log(`Finished generating ${tempFile}`);
-      fs.emptyDirSync(tmpFolder);
-      fs.moveSync(tempFile, file, { overwrite: true });
+      console.log(`Finished generating ${tmpFile}`);
+      fs.removeSync(tmpFolder);
+      fs.moveSync(tmpFile, file, { overwrite: true });
     });
 
-    command.save(tempFile);
+    command.save(tmpFile);
   };
 }
 
