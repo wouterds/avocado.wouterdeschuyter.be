@@ -12,8 +12,7 @@ export default (env, { mode }) => {
       bundle: './src/index.js',
     },
     output: {
-      path: path.resolve('./build/static'),
-      publicPath: '/static',
+      path: path.resolve('./public'),
       filename: isProduction ? '[hash:7].[name].js' : '[name].js',
     },
     resolve: {
@@ -21,7 +20,6 @@ export default (env, { mode }) => {
       modules: [
         path.resolve('./node_modules'),
         path.resolve('./resources'),
-        path.resolve('./public'),
         path.resolve('./src'),
       ],
     },
@@ -83,7 +81,6 @@ export default (env, { mode }) => {
           loader: 'file-loader',
           options: {
             name: '[hash:7].[ext]',
-            publicPath: '/static/',
           },
         },
       ],
@@ -92,7 +89,7 @@ export default (env, { mode }) => {
       new FlowBabelWebpackPlugin(),
       new HtmlWebpackPlugin({
         template: './resources/index.html',
-        filename: path.resolve('./build/index.html'),
+        filename: path.resolve('./public/index.html'),
       }),
     ],
   };
@@ -106,7 +103,7 @@ export default (env, { mode }) => {
 
     config.plugins.push(new BundleAnalyzerPlugin({
       analyzerMode: 'static',
-      reportFilename: path.resolve('./build/report.html'),
+      reportFilename: path.resolve('./public/report.html'),
       openAnalyzer: false,
     }));
   }

@@ -14,7 +14,7 @@ DOCKERFILE_NODE = ./.docker/node/Dockerfile
 
 clean:
 	-rm -rf ./node_modules
-	-rm -rf ./build
+	-rm -rf ./public
 	-rm -rf ./images/**
 	-rm -rf ./videos/**
 	-rm -rf ./.build-*
