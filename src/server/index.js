@@ -9,7 +9,6 @@ import {
   getTime,
 } from 'date-fns';
 import { sumBy } from 'lodash';
-import md5 from 'md5';
 import ffmpeg from 'fluent-ffmpeg';
 
 const dateFromPath = (image: string): Date => {
