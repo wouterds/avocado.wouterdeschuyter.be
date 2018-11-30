@@ -111,6 +111,10 @@ export default (env, { mode }) => {
   // Development specific
   if (!isProduction) {
     config.devtool = 'source-map';
+    config.devServer = {
+      contentBase: path.join(__dirname, './resources'),
+      port: 8080,
+    };
   }
 
   return config;
