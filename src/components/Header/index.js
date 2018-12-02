@@ -14,6 +14,9 @@ class App extends Component<Props> {
           <h1>Avocado Tracker</h1>
         </Link>
         <nav className={styles.nav}>
+          <Link className={styles.link} to="/last-shot">
+            Last Shot
+          </Link>
           <a className={styles.link} href="/images">
             Images
           </a>

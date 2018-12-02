@@ -11,6 +11,7 @@ const App = (): Node => (
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Pages.Landing} />
+        <Route path="/last-shot" component={Pages.LastShot} />
       </Switch>
     </BrowserRouter>
   </div>
