@@ -43,7 +43,15 @@ export const getAveragedOutImagesBetweenFactory = (from: Date, to: Date) =>
 export const getBiggestImageBetweenFactory = (from: Date, to: Date) =>
   createSelector(
     [getAveragedOutImagesBetweenFactory(from, to)],
-    (images: Image[]) => sortBy(images, ['size'])[0],
+    (images: Image[]) => {
+      images = sortBy(images, ['size']);
+
+      if (images.length === 0) {
+        return null;
+      }
+
+      return images[0];
+    },
   );
 
 export const getHasData = createSelector(
