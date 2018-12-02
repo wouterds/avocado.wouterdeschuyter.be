@@ -2,7 +2,7 @@
 import { createSelector } from 'reselect';
 import type { State } from './reducer';
 import type { Image } from './types';
-import sumBy from 'lodash/sumBy';
+import { sortBy, sumBy } from 'lodash';
 import { isAfter, isBefore } from 'date-fns';
 
 export const selectSettings = (state: Object) => state.images;
@@ -38,6 +38,12 @@ export const getAveragedOutImagesBetweenFactory = (from: Date, to: Date) =>
       images.filter(
         image => isAfter(image.time, from) || isBefore(image.time, to),
       ),
+  );
+
+export const getBiggestImageBetweenFactory = (from: Date, to: Date) =>
+  createSelector(
+    [getAveragedOutImagesBetweenFactory(from, to)],
+    (images: Image[]) => sortBy(images, ['size'])[0],
   );
 
 export const getHasData = createSelector(
