@@ -5,7 +5,7 @@ import Header from 'components/Header';
 import styles from './styles.css';
 
 type Props = {
-  children: Node,
+  children?: Node,
 };
 
 const BasePage = (props: Props): Node => {
