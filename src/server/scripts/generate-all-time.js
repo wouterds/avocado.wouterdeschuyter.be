@@ -1,7 +1,7 @@
 #!./node_modules/.bin/babel-node
 //@flow
 import path from 'path';
-import { generate as generateVideo } from 'server/helpers/video';
+import { generate as generateVideo } from '../helpers/video';
 
 /*global __dirname: true*/
 
