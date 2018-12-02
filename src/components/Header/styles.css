@@ -23,21 +23,23 @@
 .nav {
   flex: 1;
   text-align: right;
-  padding-top: 15px;
+  margin-top: 20px;
+  margin-right: -10px;
 }
 
 .link {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   text-decoration: none;
   text-transform: uppercase;
   font-weight: var(--font-weight-medium);
   color: var(--color-light-gray);
+  padding: 10px;
 
   &:hover {
     color: var(--color-gray);
   }
 
   + .link {
-    margin-left: 35px;
+    margin-left: 5px;
   }
 }
