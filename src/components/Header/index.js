@@ -17,6 +17,9 @@ class App extends Component<Props> {
           <Link className={styles.link} to="/last-shot">
             Last Shot
           </Link>
+          <Link className={styles.link} to="/last-day">
+            Last Day
+          </Link>
           <Link className={styles.link} to="/last-week">
             Last Week
           </Link>
