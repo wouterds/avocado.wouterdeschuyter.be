@@ -13,7 +13,11 @@ const LastShot = (props: Props): Node => {
   const { images } = props;
 
   if (images.length === 0) {
-    return <BasePage />;
+    return (
+      <BasePage>
+        <p>Not enough data yet.</p>
+      </BasePage>
+    );
   }
 
   const image = images[0];
