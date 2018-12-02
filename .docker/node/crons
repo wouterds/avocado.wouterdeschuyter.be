@@ -1,2 +1,2 @@
-* * * 00 00 /code/src/server/scripts/generate-last-day.js
-* * * 02 00 /code/src/server/scripts/generate-all-time.js
+* * * 00 00 cd /code && ./src/server/scripts/generate-last-day.js
+* * * 02 00 cd /code && ./src/server/scripts/generate-all-time.js
