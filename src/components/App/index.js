@@ -12,6 +12,7 @@ const App = (): Node => (
       <Switch>
         <Route exact path="/" component={Pages.Landing} />
         <Route path="/last-shot" component={Pages.LastShot} />
+        <Route path="/last-week" component={Pages.LastWeek} />
       </Switch>
     </BrowserRouter>
   </div>
