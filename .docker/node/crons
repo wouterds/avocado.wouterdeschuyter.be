@@ -1,3 +1,4 @@
 * * * 00 00 cd /code && ./src/server/scripts/generate-last-day.js
 * * * 00 15 cd /code && ./src/server/scripts/generate-last-7-days.js
+* * * 01 00 cd /code && ./src/server/scripts/generate-last-30-days.js
 * * * 02 00 cd /code && ./src/server/scripts/generate-all-time.js
