@@ -12,7 +12,7 @@ type Image = {
   date: Date,
 };
 
-const loadImages = (source: string): Image[] => {
+const loadImages = (source: string, from: Date, to: Date): Image[] => {
   // Get files from images
   let files = fs.readdirSync(source);
 
@@ -23,7 +23,7 @@ const loadImages = (source: string): Image[] => {
   files = files.map(file => path.resolve(`./images/${file}`));
 
   // Create image objects from path
-  const images: Image[] = files.map(path => ({
+  let images: Image[] = files.map(path => ({
     path,
     size: fs.statSync(path).size,
     date: new Date(
@@ -37,11 +37,17 @@ const loadImages = (source: string): Image[] => {
     ),
   }));
 
+  // Filter out images between dates
+  images = images.filter(image => isAfter(image.date, from));
+  images = images.filter(image => isBefore(image.date, to));
+
   // Calculate average image size
   const averageSize = sumBy(images, 'size') / images.length;
 
   // Strip images that are below average
-  return images.filter(image => image.size > averageSize);
+  images = images.filter(image => image.size > averageSize);
+
+  return images;
 };
 
 export const generate = (
@@ -58,17 +64,14 @@ export const generate = (
   const file = `videos/${name}.${extension}`;
 
   let i = 0;
-  const images = loadImages(source)
-    .filter(image => isAfter(image.date, from))
-    .filter(image => isBefore(image.date, to))
-    .map(image => {
-      const tmpPath = path.resolve(`${tmpFolder}/${i++}.jpg`);
+  const images = loadImages(source, from, to).map(image => {
+    const tmpPath = path.resolve(`${tmpFolder}/${i++}.jpg`);
 
-      // Copy to temp dir as incremental jpeg
-      fs.copySync(image.path, tmpPath);
+    // Copy to temp dir as incremental jpeg
+    fs.copySync(image.path, tmpPath);
 
-      return tmpPath;
-    });
+    return tmpPath;
+  });
 
   // No images?
   if (images.length === 0) {
