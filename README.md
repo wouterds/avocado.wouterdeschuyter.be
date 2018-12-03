@@ -10,9 +10,13 @@ Simple app that takes a picture every 5 minutes of my future avocado plant using
 
 ![Poster](resources/images/github-poster.png?raw=true)
 
-### Setup
+### Example setup
 
-![Setup](resources/images/setup.jpg?raw=true)
+<p align="center">
+<img src="resources/images/setup-1.jpg?raw=true" width="296" alt="setup" />
+<img src="resources/images/setup-2.jpg?raw=true" width="296" alt="setup" />
+<img src="resources/images/setup-3.jpg?raw=true" width="296" alt="setup" />
+</p>
 
 ### Example output
 
