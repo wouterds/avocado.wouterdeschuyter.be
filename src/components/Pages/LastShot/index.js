@@ -20,7 +20,7 @@ const LastShot = (props: Props): Node => {
     );
   }
 
-  const image = images[0];
+  const image = images[images.length - 1];
 
   return (
     <BasePage>
