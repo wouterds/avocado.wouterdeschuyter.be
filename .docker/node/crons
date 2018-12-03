@@ -1,4 +1,13 @@
-* * * 00 00 cd /code && ./src/server/scripts/generate-last-day.js
-* * * 01 00 cd /code && ./src/server/scripts/generate-last-7-days.js
-* * * 02 00 cd /code && ./src/server/scripts/generate-last-30-days.js
-* * * 03 00 cd /code && ./src/server/scripts/generate-all-time.js
+# .---------------- minute (0 - 59)
+# |  .------------- hour (0 - 23)
+# |  |  .---------- day of month (1 - 31)
+# |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+# |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7)  OR sun,mon,tue,wed,thu,fri,sat
+# |  |  |  |  |
+# *  *  *  *  *  command to be executed
+# *  *  *  *  *  command --arg1 --arg2 file1 file2 2>&1
+
+00 00 * * * cd /code && ./src/server/scripts/generate-last-day.js
+00 01 * * * cd /code && ./src/server/scripts/generate-last-7-days.js
+00 02 * * * cd /code && ./src/server/scripts/generate-last-30-days.js
+00 03 * * * cd /code && ./src/server/scripts/generate-all-time.js
