@@ -2,6 +2,6 @@
 export type Image = {
   url: string,
   filename: string,
-  time: Date,
+  date: Date,
   size: number,
 };
