@@ -15,17 +15,10 @@ function* fetchFlow() {
 
     const images: Image[] = response.data.map(data => {
       const { name: filename, size } = data;
-
-      const year = filename.substr(0, 4);
-      const month = filename.substr(4, 2);
-      const day = filename.substr(6, 2);
-      const hour = filename.substr(8, 2);
-      const minute = filename.substr(10, 2);
-      const time = new Date(`${year}-${month}-${day} ${hour}:${minute} UTC`);
-
       const url = `${IMAGE_LOCATION}/${filename}`;
+      const date = new Date(parseInt(filename.split('.')[0]) * 1000);
 
-      return { filename, url, size, time };
+      return { filename, url, size, date };
     });
 
     yield put(fetchSuccess(images));
