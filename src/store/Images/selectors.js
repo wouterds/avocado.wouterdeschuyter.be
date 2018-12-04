@@ -36,7 +36,7 @@ export const getAveragedOutImagesBetweenFactory = (from: Date, to: Date) =>
     [getAveragedOutImages],
     (images: Image[]) =>
       images.filter(
-        image => isAfter(image.time, from) || isBefore(image.time, to),
+        image => isAfter(image.time, from) && isBefore(image.time, to),
       ),
   );
 
