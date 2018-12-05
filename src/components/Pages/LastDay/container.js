@@ -3,20 +3,20 @@ import React from 'react';
 import type { Node } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { getBiggestImageBetweenFactory } from 'store/Images/selectors';
-import { subDays, endOfYesterday } from 'date-fns';
+import { getAveragedOutImagesBetweenFactory } from 'store/Images/selectors';
+import { subDays } from 'date-fns';
 
 const wrapLastDay = (WrappedComponent: any) => {
   const LastDay = (props): Node => <WrappedComponent {...props} />;
 
   const mapStateToProps = state => {
-    const getBiggestImageBetween = getBiggestImageBetweenFactory(
-      subDays(endOfYesterday(), 1),
-      endOfYesterday(),
+    const getImages = getAveragedOutImagesBetweenFactory(
+      subDays(new Date(), 2),
+      subDays(new Date(), 1),
     );
 
     return createStructuredSelector({
-      image: getBiggestImageBetween,
+      images: getImages,
     })(state);
   };
 

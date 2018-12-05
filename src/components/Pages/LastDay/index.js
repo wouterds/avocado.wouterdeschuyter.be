@@ -6,19 +6,21 @@ import BasePage from 'components/Pages/Base';
 import withContainer from './container';
 
 type Props = {
-  image: ?Image,
+  images: Image[],
 };
 
 const LastDay = (props: Props): Node => {
-  const { image } = props;
+  const { images } = props;
 
-  if (!image) {
+  if (images.length === 0) {
     return (
       <BasePage>
         <p>Not enough data yet.</p>
       </BasePage>
     );
   }
+
+  const image = images[images.length - 1];
 
   return (
     <BasePage>
