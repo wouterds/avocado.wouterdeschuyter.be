@@ -27,14 +27,7 @@ Simple app that takes a picture every 5 minutes of my future avocado plant using
 ### Install dependencies
 
 ```bash
-sudo apt-get install fswebcam fbi -y
-```
-
-```bash
-wget https://raw.githubusercontent.com/adafruit/Raspberry-Pi-Installer-Scripts/master/adafruit-pitft.sh
-chmod +x adafruit-pitft.sh
-sudo ./adafruit-pitft.sh
-rm ./adafruit-pitft.sh
+sudo apt-get install fswebcam -y
 ```
 
 ### Configure cron
