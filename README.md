@@ -27,6 +27,7 @@ Simple app that takes a picture every 5 minutes of my future avocado plant using
 ### Install dependencies
 
 ```bash
+sudo apt-get update
 sudo apt-get install fswebcam -y
 ```
 
