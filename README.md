@@ -59,7 +59,7 @@ npm install
 ### Development
 
 ```shell
-npm run hot
+npm run dev
 ```
 
 ### Building
