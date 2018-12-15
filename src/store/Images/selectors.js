@@ -2,7 +2,7 @@
 import { createSelector } from 'reselect';
 import type { State } from './reducer';
 import type { Image } from './types';
-import { sortBy, sumBy } from 'lodash';
+import { sumBy } from 'lodash';
 import { isAfter, isBefore } from 'date-fns';
 
 export const selectSettings = (state: Object) => state.images;
